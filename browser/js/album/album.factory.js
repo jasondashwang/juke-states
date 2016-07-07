@@ -20,6 +20,11 @@ juke.factory('AlbumFactory', function ($http, SongFactory) {
     });
   };
 
+  AlbumFactory.fetchByArtistId = function (id){
+    return $http.get('/api/artists/' + id + '/albums')
+    .then(function(res){ return res.data })
+  }
+
   AlbumFactory.convert = function (album) {
     album.imageUrl = '/api/albums/' + album.id + '/image';
     return album;

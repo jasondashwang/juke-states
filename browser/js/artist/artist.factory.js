@@ -25,6 +25,17 @@ juke.factory('ArtistFactory', function ($http, $q, AlbumFactory, SongFactory) {
     });
   };
 
+  ArtistFactory.fetchSongsById = function (id){
+    return $http.get('/api/artists/' + id + '/songs')
+    .then (function (res){ return res.data })
+    .then(function (songs){
+      songs.forEach(function(song){
+        song.audioUrl = '/api/songs/' + song.id + '/audio'
+      })
+      return songs
+    })
+  }
+
   return ArtistFactory;
 
 });

@@ -41,8 +41,4 @@ juke.controller('ArtistCtrl', function ($stateParams, $scope, $log, ArtistFactor
     }
   };
 
-  $scope.viewOneAlbum = function (album) {
-    $rootScope.$broadcast('viewSwap', { name: 'oneAlbum', id: album.id });
-  };
-
 });
